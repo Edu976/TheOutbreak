@@ -111,7 +111,7 @@ public class Gun : MonoBehaviour
             if (target != null)
             {
                 target.takeDamage(damage);
-                Debug.Log(target.health);
+                //Debug.Log(target.health);
             }
 
             // Marca en en suelo y destellos

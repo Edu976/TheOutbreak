@@ -50,23 +50,23 @@ public class EnemyAI : MonoBehaviour
         {
             if (playerDetected == false)
             {
-                Debug.Log("Player no detectado");
+                //Debug.Log("Player no detectado");
                 nm.SetDestination(this.gameObject.transform.position);
             }
             if (distance < detectionDistance)
             {
-                Debug.Log("Player detectado");
+                //Debug.Log("Player detectado");
                 playerDetected = true;
             }
             //Debug.Log("health > 0");
             if (playerDetected == true)
             {
-                Debug.Log("Zombie va a por el player");
+                //Debug.Log("Zombie va a por el player");
                 nm.SetDestination(target.position);
             }
             if (distance < chaseDistance)
             {
-                Debug.Log("Atacamos al player");
+                //Debug.Log("Atacamos al player");
                 StartCoroutine(attackPlayer());
             }
         }
