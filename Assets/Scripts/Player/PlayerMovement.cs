@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public float crouchHeigth = 1.6f;
     public float normalHeigth = 3.8f;
+    public float fallHeight;
     Vector3 velocity;
 
     [Header("Checkers")]
@@ -32,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         currentLife = maxLife;
         isDamaged = false;
         BloddOverlay.SetActive(false);
@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
+
+        
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -85,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
             // Set the vertical velocity of the player to jump velocity
             velocity.y = jumpVelocity;
         }
-
 
         /*
                 //Salto
@@ -125,9 +126,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void dead()
     {
-        PlayerMovement vida = GetComponent<PlayerMovement>();
-
-        if (vida.currentLife <= 0)
+        if (currentLife <= 0)
         {
             SceneManager.LoadScene(2);
         }

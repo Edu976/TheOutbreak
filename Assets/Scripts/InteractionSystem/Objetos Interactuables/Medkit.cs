@@ -14,6 +14,7 @@ public class Medkit : MonoBehaviour, IInteractable
     public string GetDescription()
     {
         return "Para coger botiquín";
+        
     }
 
     public void interact()

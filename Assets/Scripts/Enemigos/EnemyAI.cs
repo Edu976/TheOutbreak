@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,6 +29,10 @@ public class EnemyAI : MonoBehaviour
     public AudioClip roaming;
     public AudioClip chasing;
 
+    [Header("Wave System")]
+    float currentEnemyCount = WaveSpawner.currentEnemyCount;
+    float roundNumber = WaveSpawner.roundNumber;
+    WaveSpawner waveSystem = FindObjectOfType<WaveSpawner>();
 
 
     // Start is called before the first frame update
@@ -70,11 +75,14 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine(attackPlayer());
             }
         }
-        else if (this.enemigo.GetComponent<Target>().health <= 0)
+        else if (this.enemigo.GetComponent<Target>().health == 0)
         {
             StartCoroutine(die());
         }
     }
+
+
+
 
     // Metodo para eliminar el objeto cuando la vida del enemigo llega a 0 
     IEnumerator die()
@@ -83,6 +91,7 @@ public class EnemyAI : MonoBehaviour
         nm.SetDestination(gameObject.transform.position);
         this.gameObject.GetComponent<Animator>().Play("Dying");
         yield return new WaitForSeconds(2f);
+        waveSystem.enemigoMuerto();        
         Destroy(gameObject);
     }
 
@@ -108,5 +117,4 @@ public class EnemyAI : MonoBehaviour
             yield return new WaitForSeconds(attackInterval);
         }
     }
-
 }

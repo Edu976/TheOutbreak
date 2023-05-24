@@ -141,6 +141,39 @@ Transform:
   m_Father: {fileID: 1948350654390159494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0.187, z: 0}
+--- !u!114 &1948350653771400091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948350653208839673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd451f49f3e0c5149bae6f2f44d76647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 1948350652859839382}
+  damage: 10
+  range: 100
+  fireRate: 10
+  recoilForce: 2.5
+  recoilTime: 0.03
+  maxAmmo: 30
+  currentAmmo: 0
+  magazine: 3
+  ammoDisplay: {fileID: 0}
+  magazineDisplay: {fileID: 0}
+  reloadingTime: 1.2
+  fpsCam: {fileID: 1948350654390159489}
+  muzzleFlash: {fileID: 1852810609503660384}
+  metalImpactEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+    type: 3}
+  zombieImpactEffect: {fileID: 1000010191825552, guid: 83e55d3418297934fab882559d009285,
+    type: 3}
+  shootSound: {fileID: 0}
+  lastBullet: {fileID: 0}
+  reloadingSound: {fileID: 0}
 --- !u!1 &1948350653417112239
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +185,7 @@ GameObject:
   - component: {fileID: 1948350653417112237}
   - component: {fileID: 1948350653417112236}
   - component: {fileID: 1948350653417112210}
+  - component: {fileID: -7775743550626378919}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -208,9 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1948350653417112236}
   gravity: -29.4
-  BloddOverlay: {fileID: 0}
   maxLife: 100
-  curerntLife: 0
   lifeDisplay: {fileID: 0}
   normalSpeed: 18
   sprintSpeed: 1
@@ -222,36 +254,21 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  isDamaged: 0
---- !u!114 &1948350653771400091
+--- !u!114 &-7775743550626378919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948350653208839673}
+  m_GameObject: {fileID: 1948350653417112239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd451f49f3e0c5149bae6f2f44d76647, type: 3}
+  m_Script: {fileID: 11500000, guid: df26e12d3d04c0243a9aa97877756964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 1948350652859839382}
-  damage: 10
-  range: 100
-  fireRate: 10
-  recoilForce: 2.5
-  recoilTime: 0.03
-  maxAmmo: 30
-  magazine: 3
-  ammoDisplay: {fileID: 0}
-  magazineDisplay: {fileID: 0}
-  reloadingTime: 1.2
-  fpsCam: {fileID: 1948350654390159489}
-  muzzleFlash: {fileID: 1852810609503660384}
-  metalImpactEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
-    type: 3}
-  zombieImpactEffect: {fileID: 1000010191825552, guid: 83e55d3418297934fab882559d009285,
-    type: 3}
+  personaje: {fileID: 1948350653417112239}
+  enterPos: {x: 0, y: 0, z: 0}
+  exitPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1948350654390159491
 GameObject:
   m_ObjectHideFlags: 0
