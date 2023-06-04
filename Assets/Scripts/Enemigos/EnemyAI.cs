@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,9 +28,7 @@ public class EnemyAI : MonoBehaviour
     public AudioClip chasing;
 
     [Header("Wave System")]
-    float currentEnemyCount = WaveSpawner.currentEnemyCount;
-    float roundNumber = WaveSpawner.roundNumber;
-    WaveSpawner waveSystem = FindObjectOfType<WaveSpawner>();
+    EnemySpawner spawner;
 
 
     // Start is called before the first frame update
@@ -83,7 +79,10 @@ public class EnemyAI : MonoBehaviour
 
 
 
-
+    public void setSpawner(EnemySpawner _spawner)
+    {
+        spawner = _spawner;
+    }
     // Metodo para eliminar el objeto cuando la vida del enemigo llega a 0 
     IEnumerator die()
     {
@@ -91,7 +90,10 @@ public class EnemyAI : MonoBehaviour
         nm.SetDestination(gameObject.transform.position);
         this.gameObject.GetComponent<Animator>().Play("Dying");
         yield return new WaitForSeconds(2f);
-        waveSystem.enemigoMuerto();        
+        if (spawner != null)
+        {
+            spawner.currentEnemies.Remove(this.gameObject);
+        }
         Destroy(gameObject);
     }
 

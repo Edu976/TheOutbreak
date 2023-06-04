@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,8 +54,6 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-
-        
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
