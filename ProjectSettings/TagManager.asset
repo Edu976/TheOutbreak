@@ -27,7 +27,7 @@ TagManager:
   - Obstacles
   - Interactable
   - Ground
-  - 
+  - MiniMap
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Radar
+    uniqueID: 330811333
     locked: 0

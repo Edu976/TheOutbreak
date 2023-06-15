@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lifeDisplay.text = currentLife.ToString();
+            lifeDisplay.text = currentLife.ToString();
         /*  
             Crea una esfera invisible al final del jugador que comprueba si este esta en contacto con el suelo
             si colisiona con algo que esta dentro de la mascara groundMask isGrounded == true

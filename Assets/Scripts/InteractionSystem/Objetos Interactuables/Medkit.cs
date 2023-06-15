@@ -6,7 +6,6 @@ public class Medkit : MonoBehaviour, IInteractable
 {
     public GameObject player;
     public bool isInteracting = false;
-    public float vida;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -38,6 +37,7 @@ public class Medkit : MonoBehaviour, IInteractable
         if(isInteracting == true)
         {
             Destroy(this.gameObject);
+            isInteracting = false;
         }
     }
 }

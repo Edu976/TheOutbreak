@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //https://www.youtube.com/watch?v=hI7zH3OE8Y8
+// VERSION MEJORADA https://www.youtube.com/watch?v=Rdj1ZW-ylDg
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // Para añadir nuevos spawnPoints se pueden crear nuevos Vector3 con sus respectivas xyzLoc
     Vector3 findSpawnLoc()
     {
         Vector3 spawnPosition;
