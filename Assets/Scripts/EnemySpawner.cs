@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public List<GameObject> spawnPoints;
     public Text waveNumberDisplay;
     public float minSpawnInterval = 2f;
     public float maxSpawnInterval = 3f;
@@ -61,13 +62,14 @@ public class EnemySpawner : MonoBehaviour
     // Para añadir nuevos spawnPoints se pueden crear nuevos Vector3 con sus respectivas xyzLoc
     Vector3 findSpawnLoc()
     {
-        Vector3 spawnPosition;
+        if (spawnPoints.Count == 0)
+        {
+            Debug.LogError("No hay puntos de spawn definidos en la lista spawnPoints.");
+            return Vector3.zero;
+        }
 
-        float xLoc = Random.Range(-spawnRange, spawnRange) + transform.position.x;
-        float zLoc = Random.Range(-spawnRange, spawnRange) + transform.position.z;
-        float yLoc = transform.position.y;
-
-        spawnPosition = new Vector3(xLoc, yLoc, zLoc);
+        int randomIndex = Random.Range(0, spawnPoints.Count);
+        Vector3 spawnPosition = spawnPoints[randomIndex].transform.position;
 
         if (Physics.Raycast(spawnPosition, Vector3.down, 5))
         {

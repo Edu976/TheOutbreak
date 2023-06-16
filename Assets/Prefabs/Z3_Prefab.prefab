@@ -1390,9 +1390,9 @@ MonoBehaviour:
   animController: {fileID: 0}
   target: {fileID: 0}
   detectionDistance: 35
-  playerDetected: 0
+  playerDetected: 1
   chaseDistance: 2.5
-  damage: 1
+  damage: 10
   attack: {fileID: 0}
   Detect: {fileID: 0}
   roaming: {fileID: 0}
