@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Esta clase controla la interaccion con las cajas de munición
 public class Ammo : MonoBehaviour, IInteractable
 {
     public GameObject arma;
@@ -16,9 +17,12 @@ public class Ammo : MonoBehaviour, IInteractable
         return "Para coger munición";
     }
 
+    /* 
+        Este método añade 30 balas a la reserva en caso de que se interactue con la caja
+        y no se tenga la munición al máximo
+    */
     public void interact()
     {
-        Debug.Log("Interactuando Ammo");
         if (arma.GetComponent<Gun>().magazine < 3)
         {
             arma.GetComponent<Gun>().magazine = arma.GetComponent<Gun>().magazine + 1;
@@ -27,7 +31,7 @@ public class Ammo : MonoBehaviour, IInteractable
         }
         else
         {
-            //Add code to play sound or show message to player telling them they cannot pick up any more ammo.
+            //Añadir codigo para mostrar un mensaje diciendo que el jugador ya tiene la munición al maximo
         }
 
         if(isInteracting == true)

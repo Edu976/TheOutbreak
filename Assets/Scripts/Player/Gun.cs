@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Esta clase controla el sistema de armas del juego
 public class Gun : MonoBehaviour
 {
     [Header("Weapon Specs")]
@@ -76,16 +77,6 @@ public class Gun : MonoBehaviour
             }
             shoot();
         }
-
-        /*
-        PlayerMovement vida = GetComponent<PlayerMovement>();
-        Gun arma = GetComponent<Gun>();
-        if(vida.curerntLife <= 0)
-        {
-            arma.enabled = false;
-            //Debug.Log("Arma desactivada");
-        }
-        */
     }
 
 
@@ -103,21 +94,15 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            //Debug.Log(hit.transform.name);
-            /* 
-            hit.transform = objeto al que disparamos busca el script Target y accede a el
-            */
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
             {
                 target.takeDamage(damage);
-                //Debug.Log(target.health);
             }
 
-            // Marca en en suelo y destellos
+            // Marca en en suelo o salpica sangre y destellos
             if (hit.transform.tag.Equals("zombie"))
             {
-                //Debug.Log("Disparando zombie");
                 GameObject impactZombieGO = Instantiate(zombieImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactZombieGO, 2f);
 
@@ -126,28 +111,21 @@ public class Gun : MonoBehaviour
             {
                 GameObject impactMetalGO = Instantiate(metalImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactMetalGO, 2f);
-                //GameObject impactMetalGO = Instantiate(metalImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                //Evitar saturacion con muchos prefabs
-                //Destroy(impactMetalGO, 2f);
             }
         }
     }
-    /*
-        Metodo de recargar se llama si la municion del cargador es 0 o se presiona la letra R
-    */
+
+    //Metodo de recargar se llama si la municion del cargador es 0 o se presiona la letra R
     IEnumerator reload()
     {
         if (magazine > 0)
         {
             myAudioSource.PlayOneShot(reloadingSound, 1f);
             isReloading = true;
-            //Debug.Log("RECARGANDO");
             // espera en segundos el valor que le damos en reloadingTime
             yield return new WaitForSeconds(reloadingTime);
-            //reseteamos el valor de la municion a la municion maxima
             currentAmmo = maxAmmo;
             magazine = magazine - 1;
-            //Debug.Log(currentAmmo);
             isReloading = false;
         }
         else
@@ -156,9 +134,8 @@ public class Gun : MonoBehaviour
         }
     }
 
-    /*
-        Metodo que controla el retroceso del arma
-    */
+    
+    //Metodo que controla el retroceso del arma
     IEnumerator recoil()
     {
         weapon.transform.Rotate(-recoilForce, 0f, 0f);
@@ -168,6 +145,7 @@ public class Gun : MonoBehaviour
         transform.position = transform.position - transform.forward * (-recoilForce / 50f);
     }
 
+    //Método para playear el sonido del disparo
     void PlaySound(AudioClip clip)
     {
         myAudioSource.clip = clip;

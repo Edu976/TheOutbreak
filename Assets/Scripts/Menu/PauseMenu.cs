@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Esta clase controla el menú de pausa cuando se pausa el juego
 public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
@@ -23,6 +24,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    // Método para continuar el juego cuando este se ha pausado
     public void resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -31,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    // Método para pausar el juego
     void pause()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -39,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
+    // Método para abrir el menú principal
     public void loadMenu()
     {
         SceneManager.LoadScene(0);

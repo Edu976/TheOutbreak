@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 8879968899822410455}
   - component: {fileID: 6692080642902896157}
   - component: {fileID: 7983458325552608287}
+  - component: {fileID: 5878808591843625865}
   m_Layer: 11
   m_Name: Medkit
   m_TagString: medkit
@@ -176,3 +177,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   isInteracting: 0
+--- !u!64 &5878808591843625865
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179130308553936840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7961417566629357417, guid: ba111dd90e2fe654aad5041cd250fd15, type: 3}

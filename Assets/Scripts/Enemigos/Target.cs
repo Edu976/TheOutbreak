@@ -10,7 +10,7 @@ public class Target : MonoBehaviour
 {
     public float health = 50f;
 
-    // 
+    // Método que controla el daño que recibe un enemigo
     public void takeDamage(float amount)
     {
         health -= amount;
@@ -20,6 +20,7 @@ public class Target : MonoBehaviour
         }
     }
 
+    // Método que destruye al enemigo cuando pasa el tiempo de la animacion de muerte
     IEnumerator die()
     {
         yield return new WaitForSeconds(2f);

@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+// Esta clase es la que controla la IA enemiga, se puede ajustar desde el editor de Unity
+
 public class EnemyAI : MonoBehaviour
 {
     [Header("Objetivo")]
@@ -20,6 +22,8 @@ public class EnemyAI : MonoBehaviour
     public bool playerDetected = false;
     public float chaseDistance = 2.5f;
     public float damage = 5;
+    public float attackInterval = 1f;
+    private float lastAttackTime = 0f;
 
     [Header("Sonidos")]
     public AudioClip attack;
@@ -51,39 +55,34 @@ public class EnemyAI : MonoBehaviour
         {
             if (playerDetected == false)
             {
-                //Debug.Log("Player no detectado");
                 nm.SetDestination(this.gameObject.transform.position);
             }
             if (distance < detectionDistance)
             {
-                //Debug.Log("Player detectado");
                 playerDetected = true;
             }
-            //Debug.Log("health > 0");
             if (playerDetected == true)
             {
-                //Debug.Log("Zombie va a por el player");
                 nm.SetDestination(target.position);
             }
             if (distance < chaseDistance)
             {
-                //Debug.Log("Atacamos al player");
                 StartCoroutine(attackPlayer());
             }
         }
-        else if (this.enemigo.GetComponent<Target>().health == 0)
+        else if (this.enemigo.GetComponent<Target>().health <= 0)
         {
             StartCoroutine(die());
         }
     }
 
 
-
+    // Método para referenciar al spawner del enemigo
     public void setSpawner(EnemySpawner _spawner)
     {
         spawner = _spawner;
     }
-    // Metodo para eliminar el objeto cuando la vida del enemigo llega a 0 
+    // Método para eliminar el objeto cuando sus puntos de vida del enemigo llegan a 0 
     IEnumerator die()
     {
         nm = GetComponent<NavMeshAgent>();
@@ -97,9 +96,7 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Metodo para atacar al jugador
-    public float attackInterval = 1f;
-    private float lastAttackTime = 0f;
+    // Método para atacar al jugador segun el intervalo de tiempo de ataque de cada enemigo
 
     IEnumerator attackPlayer()
     {

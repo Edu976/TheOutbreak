@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Esta clase controla el movimiento de la camara con los inputs recibidos por el ratón
 public class MouseLook : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,10 +14,8 @@ public class MouseLook : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    /* 
-        Convierte los movimientos del teclado en los movimientos de la cara del juego
-    */
+ 
+    //Convierte los movimientos del teclado en los movimientos de la cara del juego    
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensibilidadRaton * Time.deltaTime;

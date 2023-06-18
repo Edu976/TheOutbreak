@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* 
+    Esta clase controla todos los parametros del jugador como el movimiento
+    el salto el agacharse...
+*/
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
@@ -75,23 +79,11 @@ public class PlayerMovement : MonoBehaviour
             sprintSpeed = 1f;
         }
 
-        // Check if space key is pressed and player is on the ground
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            // Calculate jump velocity using physics formula: v = sqrt(h * -2 * g)
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-            // Set the vertical velocity of the player to jump velocity
             velocity.y = jumpVelocity;
         }
-
-        /*
-                //Salto
-                if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-                {
-                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                }
-        */
 
         //Agacharse
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -110,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Este método se encarga de recibir el daño que hace un enemigo al atacar
+
     public IEnumerator takeDamage()
     {
         isDamaged = true;
@@ -121,6 +115,8 @@ public class PlayerMovement : MonoBehaviour
         }
         isDamaged = false;
     }
+
+    // Método para eliminar al jugador y cargar la oantalla de muerte
     void dead()
     {
         if (currentLife <= 0)

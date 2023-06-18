@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //https://www.youtube.com/watch?v=hI7zH3OE8Y8
-// VERSION MEJORADA https://www.youtube.com/watch?v=Rdj1ZW-ylDg
+// Mezclar con este https://www.youtube.com/watch?v=Rdj1ZW-ylDg
+
+// Esta clase controla el spawn de los enemigos y el control de las oleadas
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -24,7 +26,6 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] WaveContent[] waves;
     private int curentWave = 0;
-    float spawnRange = 10;
     public List<GameObject> currentEnemies;
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    // Spawnea un numero de enemigos indicado desde el inspector de unity
     public IEnumerator spawnWave()
     {
         //yield return new WaitForSeconds(5);
@@ -59,7 +61,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    // Para añadir nuevos spawnPoints se pueden crear nuevos Vector3 con sus respectivas xyzLoc
+    /*
+        En este método se indica el lugar en el que va a spawnear cada uno delos enemigos lanzando 
+        un random index que segun cual sea indicara un punto de spawn o otro 
+    */
     Vector3 findSpawnLoc()
     {
         if (spawnPoints.Count == 0)

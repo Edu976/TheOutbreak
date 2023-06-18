@@ -15,6 +15,7 @@ public class PlayaerInteraction : MonoBehaviour
         interactionRay();
     }
 
+    // Método que comprueba que el jugador está mirando al objeto con el que quiere interactuar
     void interactionRay()
     {
         Ray ray = mainCam.ViewportPointToRay(Vector3.one/2f);
